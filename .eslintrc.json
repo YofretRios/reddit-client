@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "plugin:vue/recommended"
+  ],
+  "rules": {
+    "vue/max-attributes-per-line": [1, {"singleline": 4}],
+    "vue/singleline-html-element-content-newline": "off"
+  }
+}
