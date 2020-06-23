@@ -20,5 +20,10 @@ yarn build
 yarn lint
 ```
 
+### Heroku Deploy
+```
+git push heroku master
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
