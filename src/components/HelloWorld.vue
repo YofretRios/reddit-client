@@ -1,5 +1,5 @@
 <template>
-  <div class="container text-center">
+  <div class="container mx-auto px-4 md:px-0 text-center">
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
