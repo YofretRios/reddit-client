@@ -1,7 +1,12 @@
 <template>
   <div class="hidden lg:block w-1/4">
     <nav class="px-6 pt-6">
-      Post Listing
+      <div>
+        Post 1
+      </div>
+      <div>
+        Post 1
+      </div>
     </nav>
   </div>
 </template>
