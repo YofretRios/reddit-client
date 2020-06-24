@@ -1,5 +1,12 @@
+@import "./button.css";
+
 @tailwind base;
 
 @tailwind components;
 
 @tailwind utilities;
+
+.thumbnail {
+  height: 60px;
+  width: 80px;
+}
