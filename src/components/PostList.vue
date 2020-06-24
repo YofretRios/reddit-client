@@ -1,6 +1,6 @@
 <template>
   <div :class="navbar ? 'fixed lg:relative' : 'hidden'" class="overflow-y-auto z-20 bg-white h-full w-full lg:block lg:w-1/4">
-    <nav class="mt-20 px-4 pt-6 divide-y divide-gray-300">
+    <nav class="mt-20 px-4 pt-2 lg:pt-4 divide-y divide-gray-300">
       <Post />
       <Post />
       <Post />
