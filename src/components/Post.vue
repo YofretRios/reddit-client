@@ -1,6 +1,6 @@
 <template>
   <div class="py-2 flex">
-    <div>
+    <div class="relative">
       <div class="overflow-hidden rounded thumbnail">
         <img class="w-auto" src="http://via.placeholder.com/300" alt="thumbnail">
       </div>

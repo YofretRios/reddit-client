@@ -1,23 +1,6 @@
 <template>
-  <div class="container w-full lg:w-3/4 xl:w-4/5">
-    <header class="p-4 lg:px-6 lg:py-4 flex">
-      <button type="button" class="lg:hidden lg:px-3">
-        <img src="../assets/hamburger.svg" class="max-w-none w-auto">
-      </button>
-
-      <input
-        type="text"
-        name="subreddit"
-        class="ml-2 lg:mr-0 focus:outline-0 border border-transparent focus:bg-white focus:border-gray-300 placeholder-gray-500 rounded-lg bg-gray-200 py-2 px-4 block w-full lg:w-2/4 appearance-none leading-normal"
-        placeholder="Search Subreddit"
-      >
-
-      <button class="btn btn-primary ml-2">
-        Search
-      </button>
-    </header>
-
-    <div class="p-4 lg:p-6 w-full">
+  <div class="w-full lg:w-3/4 xl:w-4/5 overflow-y-auto">
+    <div class="mt-20 p-4 lg:p-6 w-full">
       <h1 class="text-2xl">Post Title</h1>
       <p class="text-xs text-gray-500 pb-1">
         Posted by <span>15 hours ago</span>
@@ -34,7 +17,6 @@
 
 <script>
 export default {
-  name: 'PostDetails',
-  props: {}
+  name: 'PostDetails'
 };
 </script>

@@ -1,6 +1,16 @@
 <template>
-  <div class="hidden lg:block w-1/4">
-    <nav class="px-4 pt-6 divide-y divide-gray-300">
+  <div :class="navbar ? 'fixed lg:relative' : 'hidden'" class="overflow-y-auto z-20 bg-white h-full w-full lg:block lg:w-1/4">
+    <nav class="mt-20 px-4 pt-6 divide-y divide-gray-300">
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
       <Post />
       <Post />
     </nav>
@@ -8,6 +18,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import Post from './Post';
 
 export default {
@@ -18,6 +29,9 @@ export default {
   data() {
     return {};
   },
+  computed: mapState({
+    navbar: state => state.ui.navbar
+  })
 };
 </script>
 
