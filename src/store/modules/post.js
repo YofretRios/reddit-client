@@ -1,6 +1,12 @@
+import http from '../../services/http';
+import get from 'lodash/get';
+
 // Initial state
 const state = () => ({
   posts: [],
+  after: null,
+  before: null,
+  dist: null,
   selectedPost: {}
 });
 
@@ -9,13 +15,15 @@ const getters = {};
 
 // Actions
 const actions = {
-  fetchPost({ commit }, payload) {
-    // TODO fetch top post from reddit
-    commit('fetchPost', []);
+  async fetchPost({ commit }, payload) {
+    const response = await http.get('top');
+    let data = get(response, 'data', {});
+
+    commit('fetchPost', data);
   },
   fetchMore({ commit }, payload) {
     // TODO fetch more post if available
-    commit('fetchPost', []);
+    commit('fetchMore', []);
   },
   dismiss({ commit }, id) {
     commit('dismissPost', id);
@@ -28,7 +36,10 @@ const actions = {
 // Mutations
 const mutations = {
   fetchPost(state, payload) {
-    state.posts = payload;
+    state.posts = get(payload, 'children', []);
+    state.after = payload.after;
+    state.before = payload.before;
+    state.dist = payload.dist;
   },
   fetchMore(state, payload) {
     state.posts = state.posts.concat(payload);
