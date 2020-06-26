@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import VueRouter from 'vue-router'
+import VueRouter from 'vue-router';
 import moment from 'moment';
 import Router from './Router.vue';
 import store from './store';
@@ -15,13 +15,13 @@ const router = new VueRouter({ mode: 'history', routes });
 
 Vue.filter('timeAgo', function (value) {
   if (!value) {
-    return ''
+    return '';
   }
 
   let formattedDate = moment.unix(value).fromNow();
 
   return formattedDate;
-})
+});
 
 new Vue({
   render: (h) => h(Router),

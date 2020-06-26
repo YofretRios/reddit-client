@@ -62,6 +62,9 @@ const actions = {
     commit('dismiss', id);
 
     await http.post('dismiss', { reddit_id: id });
+  },
+  dismissAll({ commit }) {
+    commit('dismissAll');
   }
 };
 
@@ -88,6 +91,9 @@ const mutations = {
   },
   dismiss(state, id) {
     state.posts = state.posts.filter((post) => post.data.id !== id);
+  },
+  dismissAll(state) {
+    state.posts = [];
   },
   loading(state, value) {
     state.fetchingMore = value;
