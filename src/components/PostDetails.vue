@@ -7,6 +7,12 @@
       </p>
 
       <img class="m-auto lg:w-3/6 py-10" :src="selectedPost.url_overridden_by_dest" alt="attachment">
+
+      <div class="text-center">
+        <button class="btn btn-primary" :disabled="isLoading" @click="savePicture">
+          Save Image
+        </button>
+      </div>
     </div>
 
     <div v-else class="mt-20 p-4 lg:p-6 w-full">
@@ -16,12 +22,21 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'PostDetails',
   computed: mapState({
     selectedPost: state => state.post.selectedPost,
-  })
+    isLoading: state => state.ui.isLoading
+  }),
+  methods: {
+    ...mapActions({
+      saveImage: 'ui/saveImage'
+    }),
+    savePicture() {
+      this.saveImage(this.selectedPost.url_overridden_by_dest);
+    },
+  },
 };
 </script>
