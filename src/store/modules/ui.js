@@ -1,8 +1,5 @@
 // Initial state
-const state = () => ({
-  navbar: true,
-  selectedPost: null
-});
+const state = () => ({ navbar: true });
 
 // Getters
 const getters = {};

@@ -1,5 +1,5 @@
 <template>
-  <div class="py-2 flex">
+  <div class="py-2 flex cursor-pointer" @click="goToDetails">
     <div class="relative">
       <div class="overflow-hidden rounded thumbnail">
         <img class="w-auto" :src="data.thumbnail" alt="thumbnail">
@@ -14,13 +14,15 @@
 
       <footer class="relative flex items-center">
         <p class="text-xs text-gray-500">{{ data.num_comments }} comments</p>
-        <button type="button" class="btn btn-secondary sm ml-auto">Dismiss</button>
+        <button type="button" class="btn btn-secondary sm ml-auto" @click="dismissPost">Dismiss</button>
       </footer>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'Post',
   props: {
@@ -28,6 +30,22 @@ export default {
       type: Object,
       required: true
     }
-  }
+  },
+  methods: {
+    ...mapActions({
+      setPost: 'post/setPost',
+      dismiss: 'post/dismiss'
+    }),
+    goToDetails() {
+      this.setPost(this.data);
+      console.log(`go to post details ${this.data.id}`);
+    },
+    dismissPost(event) {
+      event.stopPropagation();
+
+      this.dismiss(this.data.id);
+      console.log(`dismiss this post ${this.data.id}`);
+    }
+  },
 };
 </script>
