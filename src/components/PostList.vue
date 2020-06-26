@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetchPost: "post/fetchPost"
+      fetchPost: 'post/fetchPost'
     })
   }
 };

@@ -5,10 +5,9 @@
         <img src="./assets/hamburger.svg" class="max-w-none w-auto">
       </button>
 
-
-      <button class="ml-auto">
+      <router-link class="ml-auto" to="/gallery">
         <img src="./assets/gallery.svg" class="max-w-none">
-      </button>
+      </router-link>
     </header>
     <div id="app" class="h-screen lg:flex">
       <PostLits />

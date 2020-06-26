@@ -1,12 +1,17 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import VueRouter from 'vue-router'
 import moment from 'moment';
-import App from './App.vue';
+import Root from './Root.vue';
 import store from './store';
+import routes from './routes';
 import './assets/styles/index.css';
 
 Vue.config.productionTip = false;
 Vue.use(Vuex);
+Vue.use(VueRouter);
+
+const router = new VueRouter({ mode: 'history', routes });
 
 Vue.filter('timeAgo', function (value) {
   if (!value) {
@@ -19,6 +24,7 @@ Vue.filter('timeAgo', function (value) {
 })
 
 new Vue({
-  render: (h) => h(App),
-  store: store()
+  render: (h) => h(Root),
+  store: store(),
+  router
 }).$mount('#app');
