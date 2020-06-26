@@ -4,6 +4,6 @@
 
 <script>
 export default {
-  name: 'Root'
+  name: 'Router'
 };
 </script>

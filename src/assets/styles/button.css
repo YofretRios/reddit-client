@@ -1,3 +1,9 @@
+button {
+  &:disabled {
+    @apply pointer-events-none opacity-25;
+  }
+}
+
 .btn {
   @apply font-bold py-2 px-4 rounded;
 
@@ -5,9 +11,11 @@
     @apply font-normal text-xs py-0 px-1 rounded;
   }
 }
+
 .btn-primary {
   @apply bg-blue-500 text-white;
 }
+
 .btn-primary:hover {
   @apply bg-blue-700;
 }
@@ -20,3 +28,6 @@
   @apply bg-gray-700;
 }
 
+.btn-transparent {
+  @apply bg-transparent text-black;
+}

@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import VueRouter from 'vue-router'
 import moment from 'moment';
-import Root from './Root.vue';
+import Router from './Router.vue';
 import store from './store';
 import routes from './routes';
 import './assets/styles/index.css';
@@ -24,7 +24,7 @@ Vue.filter('timeAgo', function (value) {
 })
 
 new Vue({
-  render: (h) => h(Root),
+  render: (h) => h(Router),
   store: store(),
   router
 }).$mount('#app');

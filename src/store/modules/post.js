@@ -1,13 +1,16 @@
 import http from '../../services/http';
 import get from 'lodash/get';
 
+const limit = 15;
+
 // Initial state
 const state = () => ({
   posts: [],
   after: null,
   before: null,
-  dist: null,
-  selectedPost: null
+  dist: 0,
+  selectedPost: null,
+  fetchingMore: false,
 });
 
 // Getters
@@ -19,6 +22,7 @@ const actions = {
     const { subreddit, count, after } = payload;
     const response = await http.get('top', {
       params: {
+        limit,
         subreddit,
         count,
         after: null
@@ -28,9 +32,23 @@ const actions = {
 
     commit('fetchPost', data);
   },
-  fetchMore({ commit }, payload) {
-    // TODO fetch more post if available
-    commit('fetchMore', []);
+  async fetchMore({ commit, state }, payload) {
+    const { subreddit, count, after } = payload;
+
+    commit('loading', true);
+
+    const response = await http.get('top', {
+      params: {
+        limit,
+        subreddit,
+        count: state.dist + limit,
+        after: state.after
+      }
+    });
+
+    let data = get(response, 'data', {});
+
+    commit('fetchMore', data);
   },
   setPost({ commit }, payload) {
     //TODO call mark as read endpoint
@@ -54,7 +72,11 @@ const mutations = {
     state.dist = payload.dist;
   },
   fetchMore(state, payload) {
-    state.posts = state.posts.concat(payload);
+    state.posts = state.posts.concat(get(payload, 'children', []));
+    state.after = payload.after;
+    state.before = payload.before;
+    state.dist = state.dist + limit;
+    state.fetchingMore = false;
   },
   setPost(state, payload) {
     state.selectedPost = payload;
@@ -64,6 +86,9 @@ const mutations = {
   },
   markAsRead(state, id) {
     // TODO mark as read
+  },
+  loading(state, value) {
+    state.fetchingMore = value;
   }
 };
 
