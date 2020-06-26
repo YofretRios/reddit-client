@@ -10,3 +10,11 @@
   height: 60px;
   width: 80px;
 }
+
+.navbar-offset-top {
+  margin-top: 66px;
+}
+
+.navbar-height {
+  height: calc(100% - 106px);
+}

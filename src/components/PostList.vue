@@ -1,13 +1,16 @@
 <template>
-  <div :class="navbar ? 'fixed lg:relative' : 'hidden'" class="overflow-y-auto z-20 bg-white h-full w-full lg:block lg:w-5/12">
-    <nav class="mt-20 px-4 pt-2 lg:pt-4 divide-y divide-gray-300">
-      <Post v-for="post in posts" :key="post.id" :data="post.data" />
-      <p v-if="posts.length === 0" class="text-center font-bold text-gray-500">No top post to show</p>
-    </nav>
-
-    <div v-if="posts.length !== 0" class="my-2 text-center">
-      <button class="btn btn-trasnparent" :disabled="fetchingMore" @click="loadMore">Load More</button>
+  <div :class="navbar ? 'fixed lg:relative' : 'hidden'" class="overflow-hidden z-20 bg-white h-full w-full lg:block lg:w-5/12">
+    <div class="navbar-offset-top w-full border-b border-r border-gray-300 shadow">
+      <button class="btn btn-trasnparent w-full">Dismiss all</button>
     </div>
+    <nav class="navbar-height px-4 divide-y divide-gray-300 overflow-y-auto border-r">
+      <Post v-for="post in posts" :key="post.id" :data="post.data" />
+      <p v-if="posts.length === 0" class="py-4 text-center font-bold text-gray-500">No top post to show</p>
+
+      <div v-if="posts.length !== 0" class="my-2">
+        <button class="btn btn-trasnparent w-full" :disabled="fetchingMore" @click="loadMore">Load More</button>
+      </div>
+    </nav>
   </div>
 </template>
 
