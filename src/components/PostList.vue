@@ -25,7 +25,7 @@ export default {
   }),
   mounted() {
     // Fetch Initial top post
-    this.fetchPost({ subreddit: 'BuildAPc' });
+    this.fetchPost({ subreddit: 'pics' });
   },
   methods: {
     ...mapActions({

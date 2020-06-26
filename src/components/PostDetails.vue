@@ -3,14 +3,10 @@
     <div v-if="selectedPost" class="mt-20 p-4 lg:p-6 w-full">
       <h1 class="text-2xl">{{ selectedPost.title }}</h1>
       <p class="text-xs text-gray-500 pb-1">
-        Posted by {{ selectedPost.author }} <span>{{ selectedPost.created }}</span>
+        Posted by {{ selectedPost.author }} <span>{{ selectedPost.created | timeAgo }}</span>
       </p>
 
-      <p class="pb-4">
-        {{ selectedPost.selftext }}
-      </p>
-
-      <!-- <img class="m-auto" :src="selectedPost.preview.images[0].source.url" alt="attachment"> -->
+      <img class="m-auto lg:w-3/6 py-10" :src="selectedPost.url_overridden_by_dest" alt="attachment">
     </div>
 
     <div v-else class="mt-20 p-4 lg:p-6 w-full">

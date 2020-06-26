@@ -38,7 +38,7 @@ const actions = {
   },
   dismiss({ commit }, id) {
     // TODO call dismiss endpoint
-    commit('dismissPost', id);
+    commit('dismiss', id);
   },
   markAsRead({ commit }, id) {
     commit('markAsRead');
@@ -57,11 +57,10 @@ const mutations = {
     state.posts = state.posts.concat(payload);
   },
   setPost(state, payload) {
-    console.log(payload);
     state.selectedPost = payload;
   },
   dismiss(state, id) {
-    state.posts = state.post.filter((post) => post.id !== id);
+    state.posts = state.posts.filter((post) => post.data.id !== id);
   },
   markAsRead(state, id) {
     // TODO mark as read

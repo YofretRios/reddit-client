@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex';
 import PostDetails from './components/PostDetails.vue';
 import PostLits from './components/PostList.vue';
 
@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      toggleNavBar: "ui/toggleNavBar"
+      toggleNavBar: 'ui/toggleNavBar'
     })
   }
 };

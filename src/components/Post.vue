@@ -9,7 +9,7 @@
       <h3 class="text-sm font-bold">{{ data.title }}</h3>
 
       <p class="text-xs text-gray-500 pb-1">
-        Posted by {{ data.author }} <span>{{ data.created }}</span>
+        Posted by {{ data.author }} <span>{{ data.created | timeAgo }}</span>
       </p>
 
       <footer class="relative flex items-center">
@@ -34,17 +34,17 @@ export default {
   methods: {
     ...mapActions({
       setPost: 'post/setPost',
-      dismiss: 'post/dismiss'
+      dismiss: 'post/dismiss',
+      toggleNavBar: 'ui/toggleNavBar'
     }),
     goToDetails() {
+      this.toggleNavBar();
       this.setPost(this.data);
-      console.log(`go to post details ${this.data.id}`);
     },
     dismissPost(event) {
       event.stopPropagation();
 
       this.dismiss(this.data.id);
-      console.log(`dismiss this post ${this.data.id}`);
     }
   },
 };
