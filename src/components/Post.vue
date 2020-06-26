@@ -1,12 +1,12 @@
 <template>
   <div class="py-2 flex cursor-pointer" @click="goToDetails">
     <div class="relative">
-      <div class="overflow-hidden rounded thumbnail">
+      <div class="overflow-hidden rounded thumbnail" :class="data.visited ? 'opacity-50' : 'opacity-100'">
         <img class="w-auto" :src="data.thumbnail" alt="thumbnail">
       </div>
     </div>
     <div class="ml-2 flex-1">
-      <h3 class="text-sm font-bold">{{ data.title }}</h3>
+      <h3 class="text-sm font-bold" :class="data.visited ? 'opacity-50' : 'opacity-100'">{{ data.title }}</h3>
 
       <p class="text-xs text-gray-500 pb-1">
         Posted by {{ data.author }} <span>{{ data.created | timeAgo }}</span>

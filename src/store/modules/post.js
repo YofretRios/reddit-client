@@ -1,5 +1,6 @@
 import http from '../../services/http';
 import get from 'lodash/get';
+import findIndex from 'lodash/findIndex';
 
 const limit = 15;
 
@@ -50,16 +51,17 @@ const actions = {
 
     commit('fetchMore', data);
   },
-  setPost({ commit }, payload) {
-    //TODO call mark as read endpoint
+  async setPost({ commit }, payload) {
     commit('setPost', payload);
+
+    await http.post('markAsRead', {
+      reddit_id: payload.id
+    });
   },
-  dismiss({ commit }, id) {
-    // TODO call dismiss endpoint
+  async dismiss({ commit }, id) {
     commit('dismiss', id);
-  },
-  markAsRead({ commit }, id) {
-    commit('markAsRead');
+
+    await http.post('dismiss', { reddit_id: id });
   }
 };
 
@@ -79,13 +81,13 @@ const mutations = {
     state.fetchingMore = false;
   },
   setPost(state, payload) {
+    const index = findIndex(state.posts, (post) => post.data.id === payload.id);
+
+    state.posts[index].data.visited = true;
     state.selectedPost = payload;
   },
   dismiss(state, id) {
     state.posts = state.posts.filter((post) => post.data.id !== id);
-  },
-  markAsRead(state, id) {
-    // TODO mark as read
   },
   loading(state, value) {
     state.fetchingMore = value;
