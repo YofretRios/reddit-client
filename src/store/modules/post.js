@@ -63,7 +63,11 @@ const actions = {
 
     await http.post('dismiss', { reddit_id: id });
   },
-  dismissAll({ commit }) {
+  async dismissAll({ commit, state }) {
+    await http.post('dismissAll', {
+      ids: state.posts.map((post) => post.data.id)
+    });
+
     commit('dismissAll');
   }
 };
