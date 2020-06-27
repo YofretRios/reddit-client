@@ -11,6 +11,7 @@ const state = () => ({
   before: null,
   dist: 0,
   selectedPost: null,
+  fetching: false,
   fetchingMore: false,
 });
 
@@ -21,6 +22,9 @@ const getters = {};
 const actions = {
   async fetchPost({ commit }, payload) {
     const { subreddit, count, after } = payload;
+
+    commit('setFetching', true);
+
     const response = await http.get('top', {
       params: {
         limit,
@@ -36,7 +40,7 @@ const actions = {
   async fetchMore({ commit, state }, payload) {
     const { subreddit, count, after } = payload;
 
-    commit('loading', true);
+    commit('setLoadmore', true);
 
     const response = await http.get('top', {
       params: {
@@ -79,6 +83,7 @@ const mutations = {
     state.after = payload.after;
     state.before = payload.before;
     state.dist = payload.dist;
+    state.fetching = false;
   },
   fetchMore(state, payload) {
     state.posts = state.posts.concat(get(payload, 'children', []));
@@ -99,7 +104,10 @@ const mutations = {
   dismissAll(state) {
     state.posts = [];
   },
-  loading(state, value) {
+  setFetching(state, value) {
+    state.fetching = value;
+  },
+  setLoadmore(state, value) {
     state.fetchingMore = value;
   }
 };

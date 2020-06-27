@@ -4,6 +4,7 @@
       <button class="btn btn-trasnparent w-full" @click="dismissAll">Dismiss all</button>
     </div>
     <nav class="navbar-height px-4 divide-y divide-gray-300 overflow-y-auto border-r">
+      <Loading v-if="fetching" />
       <Post v-for="post in posts" :key="post.id" :data="post.data" />
       <p v-if="posts.length === 0" class="py-4 text-center font-bold text-gray-500">No top post to show</p>
 
@@ -17,11 +18,13 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import Post from './Post';
+import Loading from './Loading';
 
 export default {
   name: 'PostList',
   components: {
-    Post
+    Post,
+    Loading
   },
   data() {
     return {};
@@ -29,7 +32,8 @@ export default {
   computed: mapState({
     navbar: state => state.ui.navbar,
     posts: state => state.post.posts,
-    fetchingMore: state => state.post.fetchingMore
+    fetchingMore: state => state.post.fetchingMore,
+    fetching: state => state.post.fetching,
   }),
   mounted() {
     // Fetch Initial top post
