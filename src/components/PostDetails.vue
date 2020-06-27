@@ -16,7 +16,7 @@
     </div>
 
     <div v-else class="mt-20 p-4 lg:p-6 w-full">
-      <p class="text-center py-4 ont-bold text-gray-500">Select a post to see the details</p>
+      <p class="text-center py-4 font-bold text-gray-500">Select a post to see the details</p>
     </div>
   </div>
 </template>

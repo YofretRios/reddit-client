@@ -10,7 +10,11 @@
       </router-link>
     </header>
 
-    <div class="h-screen pt-20">
+    <div v-if="images.length === 0" class="h-screen pt-32 text-center">
+      <p class="font-bold text-gray-500">There are no images saved into the gallery</p>
+      <p class="font-bold text-gray-500">Explore the tops post and save some!</p>
+    </div>
+    <div v-else class="h-screen pt-20">
       <v-gallery
         :images="images.map((image) => image.reddit_url)"
         :index="index"
