@@ -1,4 +1,4 @@
-import http from '../../services/http';
+import http from '../../common/http';
 import get from 'lodash/get';
 
 // Initial state

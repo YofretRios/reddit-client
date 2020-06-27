@@ -3,10 +3,13 @@ import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 import VueGallery from 'vue-gallery';
 import Toasted from 'vue-toasted';
-import moment from 'moment';
 import Router from './Router.vue';
 import store from './store';
 import routes from './routes';
+// Filters
+import timeAgo from './common/timeAgo';
+import kFormatter from './common/kFormatter';
+
 import './assets/styles/index.css';
 
 Vue.config.productionTip = false;
@@ -18,15 +21,8 @@ Vue.component('VGallery', VueGallery);
 
 const router = new VueRouter({ mode: 'history', routes });
 
-Vue.filter('timeAgo', function (value) {
-  if (!value) {
-    return '';
-  }
-
-  let formattedDate = moment.unix(value).fromNow();
-
-  return formattedDate;
-});
+Vue.filter('timeAgo', timeAgo);
+Vue.filter('kFormatter', kFormatter);
 
 new Vue({
   render: (h) => h(Router),

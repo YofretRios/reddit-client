@@ -13,7 +13,7 @@
       </p>
 
       <footer class="relative flex items-center">
-        <p class="text-xs text-gray-500">{{ data.num_comments }} comments</p>
+        <p class="text-xs text-gray-500">{{ data.num_comments | kFormatter }} comments</p>
         <button type="button" class="btn btn-secondary sm ml-auto" @click="dismissPost">Dismiss</button>
       </footer>
     </div>
