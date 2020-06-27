@@ -15,7 +15,6 @@
 
       <img class="m-auto lg:w-3/6 py-8" :src="selectedPost.url_overridden_by_dest" alt="attachment">
 
-
       <div class="text-center">
         <button class="btn btn-primary" :disabled="isLoading" @click="savePicture">
           Save Image
