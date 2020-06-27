@@ -1,5 +1,5 @@
 <template>
-  <div class="py-2 flex cursor-pointer" @click="goToDetails">
+  <div class="list-complete-item py-2 flex cursor-pointer" @click="goToDetails">
     <div class="relative">
       <div class="overflow-hidden rounded thumbnail" :class="data.visited ? 'opacity-50' : 'opacity-100'">
         <img class="w-auto" :src="data.thumbnail" alt="thumbnail">

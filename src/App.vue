@@ -9,7 +9,7 @@
         <img src="./assets/gallery.svg" class="icon-height max-w-none">
       </router-link>
     </header>
-    <div id="app" class="h-screen lg:flex">
+    <div id="app" class="h-screen lg:flex lg:overflow-auto" :class="navbar && 'overflow-hidden'">
       <PostLits />
       <PostDetails />
     </div>
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import PostDetails from './components/PostDetails.vue';
 import PostLits from './components/PostList.vue';
 
@@ -27,6 +27,9 @@ export default {
     PostDetails,
     PostLits
   },
+  computed: mapState({
+    navbar: state => state.ui.navbar
+  }),
   methods: {
     ...mapActions({
       toggleNavBar: 'ui/toggleNavBar'

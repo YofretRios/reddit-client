@@ -3,9 +3,13 @@
     <div class="navbar-offset-top w-full border-b border-r border-gray-300 shadow">
       <button class="btn btn-trasnparent w-full" @click="dismissAll">Dismiss all</button>
     </div>
-    <nav class="navbar-height px-4 divide-y divide-gray-300 overflow-y-auto border-r">
+    <nav class="navbar-height overflow-y-auto border-r">
       <Loading v-if="fetching" />
-      <Post v-for="post in posts" :key="post.id" :data="post.data" />
+
+      <transition-group class="mx-4 divide-y divide-gray-300 relative" name="list-complete" tag="div">
+        <Post v-for="post in posts" :key="post.data.id" :data="post.data" />
+      </transition-group>
+
       <p v-if="posts.length === 0" class="py-4 text-center font-bold text-gray-500">No top post to show</p>
 
       <div v-if="posts.length !== 0" class="my-2">

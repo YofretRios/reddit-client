@@ -47,6 +47,15 @@ $ yarn build
 $ yarn lint
 ```
 
+## Env variables
+
+This project only requires 1 env varaible to be set, create a `.env` file in the root folder with the following content, here is an example
+
+```
+VUE_APP_ROOT_API=http://localhost:3030/
+```
+
+
 ## Leverage
 For this project I've used the following libraries to solve common problems
 
