@@ -9,16 +9,57 @@
         <img src="./assets/gallery.svg" class="max-w-none">
       </router-link>
     </header>
+
+    <div class="h-screen pt-20">
+      <v-gallery
+        :images="images.map((image) => image.reddit_url)"
+        :index="index"
+        @close="index = null"
+      />
+
+      <section class="container m-auto flex flex-wrap justify-center">
+        <div
+          v-for="(image, imageIndex) in images"
+          :key="imageIndex"
+          :style="{ backgroundImage: `url(${image.reddit_url})`, width: '300px', height: '200px' }"
+          class="image"
+          @click="index = imageIndex"
+        >
+          <button class="btn btn-white sm shadow border border-black m-2" @click="removeImg($event, image._id)">
+            Remove
+          </button>
+        </div>
+      </section>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex';
+
 export default {
   name: 'Gallery',
   data() {
     return {
-
+      index: null
     };
+  },
+  computed: mapState({
+    images: state => state.ui.gallery
+  }),
+  mounted() {
+    this.getImages();
+  },
+  methods: {
+    ...mapActions({
+      getImages: 'ui/getImages',
+      deleteImage: 'ui/deleteImage'
+    }),
+    removeImg(event, id) {
+      event.stopPropagation();
+
+      this.deleteImage(id);
+    }
   },
 };
 </script>

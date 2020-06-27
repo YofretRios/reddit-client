@@ -18,3 +18,13 @@
 .navbar-height {
   height: calc(100% - 106px);
 }
+
+.image {
+  position: relative;
+  cursor: pointer;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: 1px solid #ebebeb;
+  margin: 5px;
+}
