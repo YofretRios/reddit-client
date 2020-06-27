@@ -4,7 +4,7 @@ Small Reddit client that allows the user to visualize `r/pics` subreddit and sav
 
 ### Live site
 
-This is site is currently deployed using heorku cloud, checkout the live Demo [here](https://reddit-tops.herokuapp.com/).
+This site is currently deployed using heorku cloud, checkout the live Demo [here](https://reddit-tops.herokuapp.com/).
 
 <p align="center">
     <img src="https://github.com/YofretRios/assets/blob/master/test-recording-2.gif">
