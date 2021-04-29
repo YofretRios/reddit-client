@@ -55,6 +55,8 @@ This project only requires 1 env varaible to be set, create a `.env` file in the
 VUE_APP_ROOT_API=http://localhost:3030/
 ```
 
+## Testing PR Templates
+Testing PR templates
 
 ## Leverage
 For this project I've used the following libraries to solve common problems
